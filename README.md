@@ -19,7 +19,7 @@ ready for analysis.
 
 ## Architecture
 
-![ETL Pipeline Architecture](docs/architecture.png)
+![ETL Pipeline Architecture](docs/weatherapp.drawio.png)
 
 | Layer | Tool |
 |-------|------|
@@ -73,7 +73,7 @@ weather-etl-pipeline/
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/ninotsutskiridze30-svg/weather-etl-pipeline.git
+git clone git@github.com:ninotsutskiridze30-svg/NYC-Tbilisi-Weather-Air-Quality-ETL-Pipeline.git
 cd weather-etl-pipeline
 
 # 2. Start the containers (Airflow + PostgreSQL)
