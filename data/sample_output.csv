@@ -1,2 +1,3 @@
 name,latitude,longitude,timezone,date,temp_avg_c,temp_min_c,temp_max_c,humidity_avg_pct,precipitation_sum_mm,wind_speed_avg_kmh,pm10_avg,pm2_5_avg,carbon_monoxide_avg,ozone_avg,european_aqi_avg
-Tbilisi,41.7151,44.8271,Asia/Tbilisi,2026-07-13,26.12,22.5,31.0,66.62,0.0,6.93,12.35,7.53,136.79,66.75,26.7
+Tbilisi,41.7151,44.8271,Asia/Tbilisi,2026-07-14,26.81,22.7,32.1,65.12,0.0,6.94,15.41,10.44,145.17,66.38,26.5
+New York,40.7128,-74.006,America/New_York,2026-07-14,27.8,24.8,32.2,69.75,0.0,9.41,29.04,17.36,215.0,72.25,51.1
