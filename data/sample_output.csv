@@ -1,0 +1,2 @@
+name,latitude,longitude,timezone,date,temp_avg_c,temp_min_c,temp_max_c,humidity_avg_pct,precipitation_sum_mm,wind_speed_avg_kmh,pm10_avg,pm2_5_avg,carbon_monoxide_avg,ozone_avg,european_aqi_avg
+Tbilisi,41.7151,44.8271,Asia/Tbilisi,2026-07-13,26.12,22.5,31.0,66.62,0.0,6.93,12.35,7.53,136.79,66.75,26.7
