@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: weather_etl_postgres
+    environment:
+      POSTGRES_DB: weather_etl
+      POSTGRES_USER: weather_user
+      POSTGRES_PASSWORD: weather_password
+    ports:
+      - "55432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U weather_user -d weather_etl"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
