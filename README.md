@@ -176,6 +176,38 @@ pins above; a Windows log bind-mount permission error was fixed with the named
 volume. The image still emits RequestsDependencyWarning about bundled chardet 6
 and Airflow 3 migration deprecation warnings; these did not prevent the verified run.
 
+## Project Stats
+
+Measured against the running Compose data database on **2026-10-28** (Asia/Tbilisi),
+after the successful Airflow verification run:
+
+| Metric | Measured value |
+|---|---|
+| Total rows in `daily_weather` | 2 |
+| New York rows | 1 |
+| Tbilisi rows | 1 |
+| Earliest date loaded | 2026-10-27 |
+| Latest date loaded | 2026-10-27 |
+| Distinct dates loaded | 1 |
+| Locations (`locations` table; both have data) | 2 |
+| Tests passed (`python -m pytest`, local virtual environment) | 2 |
+
+Reproduce the database measurements from PowerShell:
+
+```powershell
+Get-Content -Raw sql/project_stats.sql | docker compose exec -T postgres psql -U weather_user -d weather_etl -v ON_ERROR_STOP=1
+.\.venv\Scripts\python.exe -m pytest
+```
+
+History is shallow: only one day is loaded. Extraction supports a configurable
+`past_days` lookback through `run_pipeline(past_days=...)`, but has no explicit
+start/end date parameters, and `transform_daily()` currently returns only the
+earliest complete day in the response. Increasing the lookback alone will not
+backfill every day. A suggested follow-up is to choose a supported API lookback,
+transform every complete historical day, and UPSERT each city/day; for older
+history, add explicit historical date-range extraction using appropriate API
+endpoints. This backfill has **not** been implemented or run.
+
 ## Key Engineering Decisions
 
 **Idempotent loads**: `daily_weather` has a unique constraint on
